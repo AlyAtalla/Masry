@@ -3,7 +3,7 @@ import CardGame from "../features/cards/CardGame";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <header className="app-header">
         <div className="container header-inner">
           <h1>🇪🇬 Egyptian Arabic</h1>
@@ -15,14 +15,24 @@ function App() {
         <section className="welcome">
           <h2>Welcome 👋</h2>
           <p>
-            This app helps you learn <strong>real Egyptian Arabic</strong> —
-            the way people actually speak on the street.
+            This app helps you learn <strong>real Egyptian Arabic</strong> — the way
+            people actually speak on the street.
           </p>
         </section>
-              <CardGame/>
 
+        <section className="cards-section">
+          <h2>Flashcards</h2>
+          <p>Flip the cards to see translations and transliterations.</p>
+          <CardGame />
+        </section>
       </main>
-    </>
+
+      <footer className="app-footer">
+        <div className="container">
+          © 2025 Egyptian Arabic Learning App
+        </div>
+      </footer>
+    </div>
   );
 }
 

@@ -145,13 +145,60 @@ button:hover {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  line-height: 1.5;
-  background: linear-gradient(to bottom, #fff8e7, #f4e1c1); /* warm, sand-like gradient */
-  color: #333;
+  background: linear-gradient(to right, #ffe8d6, #fff6f0); /* warm desert tones */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
+header {
+  background-color: #c94f4f; /* warm reddish accent */
+  color: #fff;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  gap: 1.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #c94f4f;
+  color: #fff;
+}
+
+.app-header {
+  background-color: #c94f4f;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.subtitle {
+  display: block;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #ffe8d6;
+}
+
+.cards-section {
+  margin-top: 2rem;
+}
+
+.app-footer {
+  background-color: #c94f4f;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
 }
