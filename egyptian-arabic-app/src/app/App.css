@@ -140,3 +140,18 @@ button:hover {
 .flashcard button:hover {
   background-color: var(--color-primary);
 }
+/* src/App.css or src/styles.css */
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  background: linear-gradient(to bottom, #fff8e7, #f4e1c1); /* warm, sand-like gradient */
+  color: #333;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}

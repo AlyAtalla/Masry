@@ -31,13 +31,7 @@ export default function Card({ front, back, isFlipped, onFlip, notes }: CardProp
           {translation && <p style={{ marginTop: "0.5rem", fontStyle: "italic" }}>{translation}</p>}
         </div>
       </div>
-      <button
-        onClick={handleTranslate}
-        style={{ marginTop: "0.5rem", display: "block", cursor: "pointer" }}
-        disabled={loading}
-      >
-        {loading ? "Translating..." : "Translate"}
-      </button>
+      
     </div>
   );
 }
