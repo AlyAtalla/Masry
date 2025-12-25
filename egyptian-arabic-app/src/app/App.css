@@ -1,6 +1,46 @@
+/* ===============================
+   Variables
+   =============================== */
+:root {
+  --color-primary: #c94f4f;
+  --color-accent: #ffb347;
+  --color-surface: #fff6f0;
+  --color-border: #e0c4b0;
+  --color-muted: #555;
+  --radius: 0.5rem;
+}
+
+/* ===============================
+   Global Styles
+   =============================== */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  color: #333;
+  background: url("/assets/library-bg.jpg") center/cover no-repeat fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: -1;
+}
+
+/* ===============================
+   Header
+   =============================== */
 .app-header {
-  background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-primary);
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
 }
 
 .header-inner {
@@ -12,12 +52,23 @@
 .header-inner h1 {
   margin: 0;
   font-size: 1.4rem;
-  color: var(--color-primary);
 }
 
 .subtitle {
-  font-size: 0.9rem;
-  color: var(--color-muted);
+  display: block;
+  font-size: 1rem;
+  color: var(--color-surface);
+}
+
+/* ===============================
+   Main Sections
+   =============================== */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .welcome {
@@ -25,22 +76,41 @@
   padding: 2rem;
   border-radius: var(--radius);
   margin-top: 2rem;
+  text-align: center;
 }
 
+.welcome a {
+  font-weight: bold;
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.cards-section {
+  margin-top: 2rem;
+}
+
+/* ===============================
+   Buttons
+   =============================== */
+button,
 .app-button {
-  background-color: var(--color-primary);
-  color: white;
+  padding: 0.5rem 1rem;
   border: none;
-  padding: 0.6rem 1.2rem;
   border-radius: var(--radius);
-  font-size: 0.9rem;
+  background-color: var(--color-primary);
+  color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
+button:hover,
 .app-button:hover {
-  opacity: 0.9;
+  background-color: var(--color-accent);
 }
 
+/* ===============================
+   Flashcards
+   =============================== */
 .card-game {
   margin-top: 2rem;
   text-align: center;
@@ -89,116 +159,14 @@
   transform: rotateY(180deg);
 }
 
-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: var(--radius);
-  background-color: var(--color-primary);
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: var(--color-accent);
-}
-
-.lesson-navigator {
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.lesson-navigator h3, .lesson-navigator h4 {
-  margin: 0.25rem 0;
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
-  .flashcard {
-    height: 160px;
-    font-size: 1rem;
-  }
-
-  .card-controls {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
-.flashcard button {
-  background-color: var(--color-accent);
-  color: #fff;
-  border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: var(--radius);
-  font-size: 0.9rem;
-  transition: background-color 0.3s;
-}
-
-.flashcard button:hover {
-  background-color: var(--color-primary);
-}
-/* src/App.css or src/styles.css */
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(to right, #ffe8d6, #fff6f0); /* warm desert tones */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-header {
-  background-color: #c94f4f; /* warm reddish accent */
-  color: #fff;
-  padding: 1rem 2rem;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-main {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
-  gap: 1.5rem;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #c94f4f;
-  color: #fff;
-}
-
-.app-header {
-  background-color: #c94f4f;
-  color: white;
-  padding: 1rem 0;
-  text-align: center;
-}
-
-.subtitle {
-  display: block;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  color: #ffe8d6;
-}
-
-.cards-section {
-  margin-top: 2rem;
-}
-
+/* ===============================
+   Footer
+   =============================== */
 .app-footer {
-  background-color: #c94f4f;
+  background-color: var(--color-primary);
   color: white;
   text-align: center;
   padding: 1rem 0;
   margin-top: 2rem;
 }
+
