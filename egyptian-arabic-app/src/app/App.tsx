@@ -1,4 +1,5 @@
 import "./App.css";
+import CardGame from "../features/cards/CardGame";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
             the way people actually speak on the street.
           </p>
         </section>
+              <CardGame/>
+
       </main>
     </>
   );
