@@ -1,0 +1,32 @@
+@import "./shared/styles/theme.css";
+
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Arabic text utility */
+.arabic {
+  font-family: var(--font-arabic);
+  font-size: 1.2rem;
+  direction: rtl;
+}
+
+/* Layout helpers */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 1.5rem;
+}

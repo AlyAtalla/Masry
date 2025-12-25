@@ -1,0 +1,19 @@
+:root {
+  /* Colors */
+  --color-bg: #f9fafb;
+  --color-surface: #ffffff;
+  --color-primary: #0b5677;
+  --color-primary-soft: #e6f1f6;
+  --color-text: #1f2933;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-success: #16a34a;
+
+  /* Typography */
+  --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-arabic: "Noto Naskh Arabic", serif;
+
+  /* Layout */
+  --container-width: 1000px;
+  --radius: 12px;
+}
