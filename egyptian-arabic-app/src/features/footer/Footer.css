@@ -1,13 +1,31 @@
 .app-footer {
-  background-color: #0b5677;  /* deep blue accent */
-  color: #fff;
-  padding: 1rem 0;
+  background: #f2f2f2;
+  color: #000;
   text-align: center;
-  font-size: 0.95rem;
-  border-radius: 6px 6px 0 0;
-  margin-top: 3rem;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
 }
 
-.app-footer p {
-  margin: 0;
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.socials a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.socials a:hover {
+  transform: scale(1.1);
 }

@@ -2,6 +2,8 @@ import "./App.css";
 import CardGame from "../features/cards/CardGame";
 import About from "../features/about/About";
 import Footer from "../features/footer/Footer";
+import MiniGames from "../features/minigames/MiniGames";
+import MultipleChoiceGame from "../features/minigames/MultipleChoiceGame";
 function App() {
   return (
     <div className="app">
@@ -27,7 +29,11 @@ function App() {
           <CardGame />
            <About />
         </section>
+        <MiniGames />
+        <MultipleChoiceGame />
+
       </main>
+      
 <Footer />
       <footer className="app-footer">
         <div className="container">

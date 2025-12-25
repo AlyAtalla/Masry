@@ -1,0 +1,42 @@
+.mini-games {
+  background-color: #f2f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.mini-games h2 {
+  margin-bottom: 1rem;
+}
+
+.question-card {
+  background-color: #fff;
+  border: 2px solid #0b5677;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.mini-games input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 70%;
+  margin-right: 0.5rem;
+}
+
+.mini-games button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #0b5677;
+  color: #fff;
+  cursor: pointer;
+}
+
+.feedback {
+  margin-top: 0.75rem;
+  font-weight: bold;
+}
