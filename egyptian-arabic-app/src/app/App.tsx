@@ -1,6 +1,7 @@
 import "./App.css";
 import CardGame from "../features/cards/CardGame";
-
+import About from "../features/about/About";
+import Footer from "../features/footer/Footer";
 function App() {
   return (
     <div className="app">
@@ -24,9 +25,10 @@ function App() {
           <h2>Flashcards</h2>
           <p>Flip the cards to see translations and transliterations.</p>
           <CardGame />
+           <About />
         </section>
       </main>
-
+<Footer />
       <footer className="app-footer">
         <div className="container">
           © 2025 Egyptian Arabic Learning App
