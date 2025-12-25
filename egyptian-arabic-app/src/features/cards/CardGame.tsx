@@ -1,51 +1,45 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import type { Card as CardType } from "../../data/cards"; // type-only import
 import { cards } from "../../data/cards";
-import Card from "../../shared/components/Card";
-import Button from "../../shared/components/Button";
-import {
-  createInitialState,
-  flipCard,
-  nextCard,
-  previousCard,
-} from "./card.logic";
+import Card from "../../shared/components/Card"; // your Card.tsx
+import "./CardGame.css";
 
-export default function CardGame() {
-  const [state, setState] = useState(createInitialState());
+const CARDS_PER_PAGE = 12;
 
-  const currentCard = cards[state.currentIndex];
+const CardGame = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
+  const start = currentPage * CARDS_PER_PAGE;
+  const currentCards = shuffledCards.slice(start, start + CARDS_PER_PAGE);
+
+  const totalPages = Math.ceil(cards.length / CARDS_PER_PAGE);
+
+  const handleNext = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  };
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
 
   return (
     <section className="card-game">
-      <h2>Flashcards</h2>
-
-      <Card
-        front={currentCard.front}
-        back={currentCard.back}
-        isFlipped={state.isFlipped}
-        onFlip={() => setState(flipCard(state))}
-      />
-
-      <div className="card-controls">
-        <Button
-          onClick={() =>
-            setState(previousCard(state, cards.length))
-          }
-        >
-          Previous
-        </Button>
-
-        <Button
-          onClick={() =>
-            setState(nextCard(state, cards.length))
-          }
-        >
-          Next
-        </Button>
+      <div className="cards-container">
+        {currentCards.map((card) => (
+          <Card key={card.id} card={card} />
+        ))}
       </div>
 
-      <p className="card-counter">
-        Card {state.currentIndex + 1} / {cards.length}
-      </p>
+      <div className="pagination">
+        <button onClick={handlePrev}>⬅ Prev</button>
+        <span>
+          Page {currentPage + 1} of {totalPages}
+        </span>
+        <button onClick={handleNext}>Next ➡</button>
+      </div>
     </section>
   );
-}
+};
+
+export default CardGame;

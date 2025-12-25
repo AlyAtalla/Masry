@@ -1,37 +1,28 @@
-import { useState } from "react";
-import { translateText } from "../utils/translate";
+import React, { useState } from "react";
+import type { Card as CardType } from "../../data/cards";
+import "./Card.css";
 
-type CardProps = {
-  front: string;
-  back: string;
-  isFlipped: boolean;
-  onFlip: () => void;
-  notes?: string;
-};
+interface CardProps {
+  card: CardType;
+}
 
-export default function Card({ front, back, isFlipped, onFlip, notes }: CardProps) {
-  const [translation, setTranslation] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const handleTranslate = async (e: React.MouseEvent) => {
-    e.stopPropagation(); // prevent flip
-    setLoading(true);
-    const result = await translateText(front);
-    setTranslation(result);
-    setLoading(false);
-  };
+const Card: React.FC<CardProps> = ({ card }) => {
+  const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className={`flashcard ${isFlipped ? "flipped" : ""}`} onClick={onFlip}>
+    <div className={`card ${flipped ? "flipped" : ""}`} onClick={() => setFlipped(!flipped)}>
       <div className="card-inner">
-        <div className="card-face front arabic">{front}</div>
-        <div className="card-face back">
-          <div>{back}</div>
-          {notes && <small style={{ display: "block", marginTop: "0.5rem" }}>{notes}</small>}
-          {translation && <p style={{ marginTop: "0.5rem", fontStyle: "italic" }}>{translation}</p>}
+        <div className="card-front">
+          {card.front}
+          {card.transliteration && <div className="transliteration">{card.transliteration}</div>}
+        </div>
+        <div className="card-back">
+          {card.back}
+          {card.notes && <div className="notes">{card.notes}</div>}
         </div>
       </div>
-      
     </div>
   );
-}
+};
+
+export default Card;
