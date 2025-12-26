@@ -5,8 +5,6 @@ import Footer from "../features/footer/Footer";
 import MiniGames from "../features/minigames/MiniGames";
 import MultipleChoiceGame from "../features/minigames/MultipleChoiceGame";
 import ContactForm from "../features/contact/ContactForm";
-import PhotoWordGame from "../features/minigames/PhraseMatchGame";
-import WordMatchGame from "../features/minigames/PhraseMatchGame";
 import PhraseMatchGame from "../features/minigames/PhraseMatchGame";
 
 

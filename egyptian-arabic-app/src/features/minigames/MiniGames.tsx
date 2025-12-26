@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { cards } from "../../data/cards";
 import "./MiniGames.css";
 
-const MAX_QUESTIONS = 5;
 
 const getRandomCard = () => cards[Math.floor(Math.random() * cards.length)];
 

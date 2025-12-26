@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import type { Card as CardType } from "../../data/cards"; // type-only import
+import  { useState } from "react";
 import { cards } from "../../data/cards";
 import Card from "../../shared/components/Card"; // your Card.tsx
 import "./CardGame.css";
