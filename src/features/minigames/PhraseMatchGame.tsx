@@ -255,48 +255,54 @@ const PhraseMatchGame = () => {
       </div>
 
       <div className="columns-container">
-        <div className="column">
-          <h3 className="column-title">English</h3>
-          {englishColumn.map((phrase, idx) => {
-            const isMatched = matchedPairs.some(p => p[0] === idx);
-            const isSelected = selectedEnglish === idx;
-            const categoryClass = phrase.category ? `category-${phrase.category}` : '';
-            
-            return (
-              <div
-                key={idx}
-                className={`phrase-card ${isMatched ? 'matched' : ''} ${isSelected ? 'selected' : ''} ${categoryClass}`}
-                onClick={() => handleSelectEnglish(idx)}
-              >
-                {phrase.english}
-                {phrase.category && showCategories && (
-                  <span className="category-badge">{phrase.category}</span>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <div className="game-columns">
+          <div className="column">
+            <h3 className="column-title">English</h3>
+            {englishColumn.map((phrase, idx) => {
+              const isMatched = matchedPairs.some(p => p[0] === idx);
+              const isSelected = selectedEnglish === idx;
+              const categoryClass = phrase.category ? `category-${phrase.category}` : '';
+              
+              return (
+                <div
+                  key={idx}
+                  className={`phrase-card ${isMatched ? 'matched' : ''} ${isSelected ? 'selected' : ''} ${categoryClass}`}
+                  onClick={() => handleSelectEnglish(idx)}
+                >
+                  <div className="phrase-content">
+                    <div className="phrase-text">{phrase.english}</div>
+                    {phrase.category && showCategories && (
+                      <span className="category-badge">{phrase.category}</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-        <div className="column">
-          <h3 className="column-title">Egyptian Arabic</h3>
-          {arabicColumn.map((phrase, idx) => {
-            const isMatched = matchedPairs.some(p => p[1] === idx);
-            const isSelected = selectedArabic === idx;
-            const categoryClass = phrase.category ? `category-${phrase.category}` : '';
-            
-            return (
-              <div
-                key={idx}
-                className={`phrase-card ${isMatched ? 'matched' : ''} ${isSelected ? 'selected' : ''} ${categoryClass}`}
-                onClick={() => handleSelectArabic(idx)}
-              >
-                {phrase.arabic}
-                {phrase.category && showCategories && (
-                  <span className="category-badge">{phrase.category}</span>
-                )}
-              </div>
-            );
-          })}
+          <div className="column">
+            <h3 className="column-title">Egyptian Arabic</h3>
+            {arabicColumn.map((phrase, idx) => {
+              const isMatched = matchedPairs.some(p => p[1] === idx);
+              const isSelected = selectedArabic === idx;
+              const categoryClass = phrase.category ? `category-${phrase.category}` : '';
+              
+              return (
+                <div
+                  key={idx}
+                  className={`phrase-card ${isMatched ? 'matched' : ''} ${isSelected ? 'selected' : ''} ${categoryClass}`}
+                  onClick={() => handleSelectArabic(idx)}
+                >
+                  <div className="phrase-content">
+                    <div className="phrase-text arabic-text">{phrase.arabic}</div>
+                    {phrase.category && showCategories && (
+                      <span className="category-badge">{phrase.category}</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
