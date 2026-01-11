@@ -499,6 +499,8 @@
   
   .arabic-text {
     font-size: 2rem;
+    color: #4CAF50;
+    font-weight: bold;
   }
   
   .english-text {
