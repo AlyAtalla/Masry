@@ -7,6 +7,99 @@ export type Card = {
   notes?: string;           
 };
 
+// Add this GrammarExercise type and grammarExercises array to your cards.tsx file
+export type GrammarExercise = {
+  id: string;
+  type: 'conjugation' | 'negation' | 'question' | 'translation';
+  question: string;
+  answer: string;
+  options?: string[];
+  hint?: string;
+};
+
+export const grammarExercises: GrammarExercise[] = [
+  {
+    id: "gex-1",
+    type: "conjugation",
+    question: "Conjugate 'to write' for 'I':",
+    answer: "بكتب",
+    options: ["بكتب", "بتكتب", "بيكتب", "بنكتب"],
+    hint: "Prefix بـ for first person"
+  },
+  {
+    id: "gex-2",
+    type: "conjugation",
+    question: "Conjugate 'to read' for 'he':",
+    answer: "بيقرا",
+    options: ["بقري", "بتقري", "بيقرا", "بنقرا"],
+    hint: "Prefix بيـ for third person masculine"
+  },
+  {
+    id: "gex-3",
+    type: "negation",
+    question: "Make this negative: 'عارف' (I know)",
+    answer: "مش عارف",
+    options: ["عارف مش", "مش عارف", "ما عارفش", "عرفت"],
+    hint: "Use 'مش' before the verb"
+  },
+  {
+    id: "gex-4",
+    type: "question",
+    question: "How do you ask 'Where?'",
+    answer: "فين؟",
+    options: ["امتى؟", "ليه؟", "فين؟", "كام؟"],
+    hint: "Location question word"
+  },
+  {
+    id: "gex-5",
+    type: "translation",
+    question: "Translate: 'My house'",
+    answer: "بيتي",
+    options: ["بيتك", "بيته", "بيتي", "بيتنا"],
+    hint: "Possessive suffix for first person"
+  },
+  {
+    id: "gex-6",
+    type: "conjugation",
+    question: "Conjugate 'to eat' for 'we':",
+    answer: "بناكل",
+    options: ["باكل", "بتاكل", "بياكل", "بناكل"],
+    hint: "Prefix بنـ for first person plural"
+  },
+  {
+    id: "gex-7",
+    type: "negation",
+    question: "Make this negative: 'رايح' (I'm going)",
+    answer: "مش رايح",
+    options: ["رايح مش", "مش رايح", "ما رايحش", "روحت"],
+    hint: "Use 'مش' before present participle"
+  },
+  {
+    id: "gex-8",
+    type: "question",
+    question: "How do you ask 'How much/many?'",
+    answer: "كام؟",
+    options: ["امتى؟", "ليه؟", "فين؟", "كام؟"],
+    hint: "Quantity question word"
+  },
+  {
+    id: "gex-9",
+    type: "translation",
+    question: "Translate: 'His book'",
+    answer: "كتابه",
+    options: ["كتابي", "كتابك", "كتابه", "كتابها"],
+    hint: "Possessive suffix for third person masculine"
+  },
+  {
+    id: "gex-10",
+    type: "conjugation",
+    question: "Conjugate 'to drink' for 'she':",
+    answer: "بتشرب",
+    options: ["باشرب", "بتشرب", "بيشرب", "بنشرب"],
+    hint: "Prefix بتـ for third person feminine"
+  }
+];
+
 export const cards: Card[] = [
   { id: "001", front: "إزيك؟", transliteration: "izzayyak?", back: "How are you?", audio: "", notes: "informal greeting" },
   { id: "002", front: "صباح الخير", transliteration: "sabah el-kheir", back: "Good morning", audio: "" },
