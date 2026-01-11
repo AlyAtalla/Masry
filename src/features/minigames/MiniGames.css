@@ -1,42 +1,418 @@
 .mini-games {
-  background-color: #f2f9f9;
-  padding: 2rem;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2.5rem;
+  border-radius: 16px;
   margin-top: 2rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.mini-games::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+.mini-games > * {
+  position: relative;
+  z-index: 1;
 }
 
 .mini-games h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-size: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mini-games p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.score-display {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.score-item {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  min-width: 120px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.score-item.streak {
+  background: linear-gradient(135deg, #ff6b6b, #ffa500);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.score-label {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 0.25rem;
+}
+
+.score-value {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.exercise-type {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.type-badge {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.type-badge.vocabulary {
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+}
+
+.type-badge.grammar {
+  background: linear-gradient(135deg, #2196F3, #0D47A1);
 }
 
 .question-card {
-  background-color: #fff;
-  border: 2px solid #0b5677;
-  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.question-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+.question-card h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.transliteration-hint {
+  color: #666;
+  font-style: italic;
+  font-size: 1rem;
+  text-align: center;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.03);
   border-radius: 6px;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
+}
+
+.exercise-instruction {
+  color: #ff6b35;
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0.5rem 0 0 0;
+  font-weight: 500;
+}
+
+.hint-section {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.hint-button {
+  background: linear-gradient(135deg, #FF9800, #F57C00);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+}
+
+.hint-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(255, 152, 0, 0.4);
+}
+
+.hint-content {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #FF9800;
+  text-align: left;
+}
+
+.hint-content p {
+  color: #333;
+  margin: 0;
+}
+
+.input-group {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .mini-games input {
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  width: 70%;
-  margin-right: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
 }
 
-.mini-games button {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+.mini-games input:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+  background: white;
+}
+
+.mini-games input::placeholder {
+  color: #999;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
   border: none;
-  background-color: #0b5677;
-  color: #fff;
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 200px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+}
+
+.skip-btn {
+  background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 200px;
+}
+
+.skip-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(156, 39, 176, 0.3);
+}
+
+.feedback-section {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .feedback {
-  margin-top: 0.75rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.feedback.correct {
+  color: #2E7D32;
+  background: rgba(76, 175, 80, 0.1);
+  border: 2px solid #4CAF50;
+}
+
+.feedback.incorrect {
+  color: #C62828;
+  background: rgba(244, 67, 54, 0.1);
+  border: 2px solid #F44336;
+}
+
+.feedback.skipped {
+  color: #9C27B0;
+  background: rgba(156, 39, 176, 0.1);
+  border: 2px solid #9C27B0;
+}
+
+.exercise-notes {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #FF9800;
+}
+
+.notes {
+  margin: 0;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.next-actions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.next-button {
+  background: linear-gradient(135deg, #2196F3, #0D47A1);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.next-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(33, 150, 243, 0.3);
+}
+
+.attempts-info {
+  margin-top: 0.75rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.quick-tips {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  text-align: center;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.quick-tips p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .mini-games {
+    padding: 1.5rem;
+  }
+  
+  .score-display {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .score-item {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .question-card h3 {
+    font-size: 1.4rem;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+  }
+  
+  .submit-btn, .skip-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .question-card,
+  .feedback-section {
+    background: rgba(30, 30, 30, 0.95);
+  }
+  
+  .question-card h3 {
+    color: #f0f0f0;
+  }
+  
+  .transliteration-hint {
+    color: #aaa;
+  }
+  
+  .notes {
+    color: #ddd;
+  }
+  
+  .mini-games input {
+    background: rgba(40, 40, 40, 0.95);
+    color: #f0f0f0;
+    border-color: #555;
+  }
 }
