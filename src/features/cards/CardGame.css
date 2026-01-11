@@ -523,7 +523,8 @@
   
   .card {
     height: 320px;
-    max-width: 280px;
+    width: 90vw;
+    max-width: 320px;
   }
   
   .card-front,
@@ -532,8 +533,10 @@
     font-size: 1rem;
   }
   
-  .arabic-text {
-    font-size: 1.2rem;
+  .card-back .arabic-text {
+    font-weight: bold;
+    color: #16a34a;
+    font-size: 1.4rem;
   }
   
   .transliteration {
