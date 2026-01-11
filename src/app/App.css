@@ -327,6 +327,10 @@ main {
   transition: var(--transition);
 }
 
+.game-card.full-width {
+  grid-column: 1 / -1;
+}
+
 .game-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-md);

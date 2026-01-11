@@ -135,7 +135,7 @@ function App() {
               <MultipleChoiceGame />
             </div>
             
-            <div className="game-card">
+            <div className="game-card full-width">
               <h3>Phrase Matching</h3>
               <p>Match English phrases with their Egyptian Arabic translations in this engaging game.</p>
               <PhraseMatchGame />
