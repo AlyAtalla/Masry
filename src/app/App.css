@@ -603,6 +603,18 @@ button.danger,
   }
 }
 
+/* Arabic text styling for flashcards */
+.arabic-text {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .arabic-text {
+    color: #4CAF50;
+    font-weight: bold;
+  }
+}
+
 /* Focus styles for accessibility */
 a:focus,
 button:focus,
