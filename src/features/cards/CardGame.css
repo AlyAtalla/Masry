@@ -514,6 +514,45 @@
   }
 }
 
+/* Additional mobile adjustments for very small screens */
+@media (max-width: 480px) {
+  .card-game {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .card {
+    height: 320px;
+    max-width: 280px;
+  }
+  
+  .card-front,
+  .card-back {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .arabic-text {
+    font-size: 1.2rem;
+  }
+  
+  .transliteration {
+    font-size: 0.9rem;
+  }
+  
+  .notes {
+    font-size: 0.8rem;
+  }
+  
+  .card-game-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .card-game-header p {
+    font-size: 1rem;
+  }
+}
+
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .card-front {
