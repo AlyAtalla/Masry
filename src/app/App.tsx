@@ -6,12 +6,26 @@ import MiniGames from "../features/minigames/MiniGames";
 import MultipleChoiceGame from "../features/minigames/MultipleChoiceGame";
 import ContactForm from "../features/contact/ContactForm";
 import PhraseMatchGame from "../features/minigames/PhraseMatchGame";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const saved = localStorage.getItem('theme');
+    return (saved as 'light' | 'dark') || 'light';
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
 
   return (
     <div className="app">
@@ -168,7 +182,7 @@ function App() {
         </section>
       </main>
 
-      <Footer />
+      <Footer toggleTheme={toggleTheme} theme={theme} />
     </div>
   );
 }

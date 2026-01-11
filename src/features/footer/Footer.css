@@ -371,6 +371,32 @@
   }
 }
 
+/* Manual dark theme override */
+:root[data-theme="dark"] .app-footer {
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+}
+
+:root[data-theme="dark"] .footer-section {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .social-link {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .social-link:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="dark"] .stat-item {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .progress-item {
+  background: rgba(0, 0, 0, 0.2);
+}
+
 /* Wave animation */
 @keyframes waveAnimation {
   0% {

@@ -190,6 +190,11 @@
   overflow-y: auto;
 }
 
+.card-back .arabic-text {
+  font-weight: bold;
+  color: #16a34a;
+}
+
 .notes {
   color: #FFD700;
   font-size: 0.9rem;
@@ -533,12 +538,7 @@
     font-size: 1rem;
   }
   
-  .card-back .arabic-text {
-    font-weight: bold;
-    color: #16a34a;
-    font-size: 1.4rem;
-  }
-  
+
   .transliteration {
     font-size: 0.9rem;
   }
@@ -589,6 +589,29 @@
 
 .card.flipped {
   animation: cardFlip 0.6s ease;
+}
+
+/* Manual dark theme override */
+:root[data-theme="dark"] .card-front {
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  border-color: #4299e1;
+}
+
+:root[data-theme="dark"] .arabic-text {
+  color: #f7fafc;
+}
+
+:root[data-theme="dark"] .transliteration {
+  color: #cbd5e0;
+}
+
+:root[data-theme="dark"] .study-mode-prompt {
+  background: rgba(45, 55, 72, 0.95);
+  color: #f7fafc;
+}
+
+:root[data-theme="dark"] .study-mode-prompt h3 {
+  color: #63b3ed;
 }
 
 /* Loading state */

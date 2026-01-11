@@ -416,3 +416,27 @@
     border-color: #555;
   }
 }
+
+/* Manual dark theme override */
+:root[data-theme="dark"] .question-card,
+:root[data-theme="dark"] .feedback-section {
+  background: rgba(30, 30, 30, 0.95);
+}
+
+:root[data-theme="dark"] .question-card h3 {
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .transliteration-hint {
+  color: #aaa;
+}
+
+:root[data-theme="dark"] .notes {
+  color: #ddd;
+}
+
+:root[data-theme="dark"] .mini-games input {
+  background: rgba(40, 40, 40, 0.95);
+  color: #f0f0f0;
+  border-color: #555;
+}

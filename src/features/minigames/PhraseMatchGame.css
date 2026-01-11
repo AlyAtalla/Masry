@@ -492,3 +492,30 @@
     background: rgba(255, 255, 255, 0.05);
   }
 }
+
+/* Manual dark theme override */
+:root[data-theme="dark"] .phrase-card {
+  background: rgba(40, 40, 40, 0.95);
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .phrase-card.selected {
+  background: #2196F3;
+}
+
+:root[data-theme="dark"] .phrase-card.matched {
+  background: linear-gradient(135deg, #2E7D32, #1B5E20);
+}
+
+:root[data-theme="dark"] .completion-message {
+  background: rgba(30, 30, 30, 0.95);
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .completion-message h3 {
+  color: #81C784;
+}
+
+:root[data-theme="dark"] .completion-stats div {
+  background: rgba(255, 255, 255, 0.05);
+}

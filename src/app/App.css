@@ -590,6 +590,15 @@ button.danger,
   }
 }
 
+/* Manual dark theme override */
+:root[data-theme="dark"] {
+  --color-surface: #1a1a1a;
+  --color-surface-alt: #2d2d2d;
+  --color-text: #f0f0f0;
+  --color-text-light: #aaaaaa;
+  --color-border: #404040;
+}
+
 /* ===============================
    Accessibility
    =============================== */

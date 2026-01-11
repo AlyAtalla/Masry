@@ -417,3 +417,65 @@
     color: #cbd5e0;
   }
 }
+
+/* Manual dark theme override */
+:root[data-theme="dark"] .contact-form-section {
+  background: linear-gradient(135deg, rgba(45, 55, 72, 0.95), rgba(74, 85, 104, 0.95));
+  border-color: rgba(255, 215, 0, 0.1);
+}
+
+:root[data-theme="dark"] .contact-title {
+  color: #f7fafc;
+}
+
+:root[data-theme="dark"] .contact-subtitle {
+  color: #cbd5e0;
+}
+
+:root[data-theme="dark"] .info-card {
+  background: #2d3748;
+  border-left-color: #FFD700;
+}
+
+:root[data-theme="dark"] .info-card h3 {
+  color: #f7fafc;
+}
+
+:root[data-theme="dark"] .info-card p {
+  color: #a0aec0;
+}
+
+:root[data-theme="dark"] .contact-form {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+:root[data-theme="dark"] .form-label {
+  color: #f7fafc;
+}
+
+:root[data-theme="dark"] .form-input,
+:root[data-theme="dark"] .form-textarea {
+  background: #4a5568;
+  border-color: #718096;
+  color: #f7fafc;
+}
+
+:root[data-theme="dark"] .form-input:focus,
+:root[data-theme="dark"] .form-textarea:focus {
+  background: #4a5568;
+  border-color: #667eea;
+}
+
+:root[data-theme="dark"] .form-input::placeholder,
+:root[data-theme="dark"] .form-textarea::placeholder {
+  color: #a0aec0;
+}
+
+:root[data-theme="dark"] .alternative-contact {
+  background: #4a5568;
+}
+
+:root[data-theme="dark"] .alternative-contact p {
+  color: #cbd5e0;
+}

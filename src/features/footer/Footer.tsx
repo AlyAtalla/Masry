@@ -1,7 +1,12 @@
 import React from "react";
 import "./Footer.css";
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  toggleTheme: () => void;
+  theme: 'light' | 'dark';
+}
+
+const Footer: React.FC<FooterProps> = ({ toggleTheme, theme }) => {
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
@@ -131,8 +136,8 @@ const Footer: React.FC = () => {
             >
               ↑ Back to Top
             </button>
-            <button className="theme-toggle">
-              🌓 Toggle Theme
+            <button className="theme-toggle" onClick={toggleTheme}>
+              {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
             </button>
           </div>
         </div>

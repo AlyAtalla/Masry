@@ -498,3 +498,55 @@
     color: #ccc;
   }
 }
+
+/* Manual dark theme override */
+:root[data-theme="dark"] .about-content {
+  background: rgba(30, 30, 30, 0.95);
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .main-description {
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .main-description strong {
+  color: #9d7cff;
+}
+
+:root[data-theme="dark"] .feature-card {
+  background: #2d2d2d;
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .feature-title {
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .feature-description {
+  color: #ccc;
+}
+
+:root[data-theme="dark"] .path-step {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+:root[data-theme="dark"] .step-content h4 {
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .step-content p {
+  color: #ccc;
+}
+
+:root[data-theme="dark"] .teacher-info {
+  background: #2d2d2d;
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .teacher-details h4 {
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .teacher-details p {
+  color: #ccc;
+}
