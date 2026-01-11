@@ -17,7 +17,7 @@ const Card: React.FC<CardProps> = ({ card }) => {
           {card.transliteration && <div className="transliteration">{card.transliteration}</div>}
         </div>
         <div className="card-back">
-          {card.back}
+          <div className="arabic-text">{card.back}</div>
           {card.notes && <div className="notes">{card.notes}</div>}
         </div>
       </div>
