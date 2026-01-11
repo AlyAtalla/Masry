@@ -6,8 +6,13 @@ import MiniGames from "../features/minigames/MiniGames";
 import MultipleChoiceGame from "../features/minigames/MultipleChoiceGame";
 import ContactForm from "../features/contact/ContactForm";
 import PhraseMatchGame from "../features/minigames/PhraseMatchGame";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="app">
       <div className="background-overlay"></div>
