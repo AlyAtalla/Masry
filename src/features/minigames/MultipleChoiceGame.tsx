@@ -109,16 +109,8 @@ type MixedExercise = {
   transliteration?: string;
 };
 
-const getRandomVocabularyExercise = (): MixedExercise => {
-  const randomCard = cards[Math.floor(Math.random() * cards.length)];
-  return {
-    type: 'vocabulary',
-    card: randomCard,
-    question: `${randomCard.front} (${randomCard.transliteration})`,
-    correctAnswer: randomCard.back,
-    transliteration: randomCard.transliteration
-  };
-};
+// NOTE: vocabulary selection will be handled inside the component
+// so we can track which cards have already been shown and avoid repeats.
 
 const getRandomGrammarExercise = (): MixedExercise => {
   const randomExercise = grammarExercises[Math.floor(Math.random() * grammarExercises.length)];
@@ -130,10 +122,7 @@ const getRandomGrammarExercise = (): MixedExercise => {
   };
 };
 
-const getRandomExercise = (): MixedExercise => {
-  const isGrammar = Math.random() > 0.5 && grammarExercises.length > 0;
-  return isGrammar ? getRandomGrammarExercise() : getRandomVocabularyExercise();
-};
+// (vocabulary selection is handled inside the component)
 
 const getRandomOptions = (correctAnswer: string, type: ExerciseType = 'vocabulary'): string[] => {
   const options = new Set<string>();
@@ -164,22 +153,61 @@ const getRandomOptions = (correctAnswer: string, type: ExerciseType = 'vocabular
 };
 
 const MultipleChoiceGame: React.FC = () => {
-  const [currentExercise, setCurrentExercise] = useState<MixedExercise>(() => getRandomExercise());
-  const [options, setOptions] = useState<string[]>(
-    () => getRandomOptions(currentExercise.correctAnswer, currentExercise.type)
-  );
+  const [usedVocabIds, setUsedVocabIds] = useState<string[]>([]);
+
+  const pickRandomVocabularyExercise = (): MixedExercise => {
+    // find unused cards
+    const unused = cards.filter((c) => !usedVocabIds.includes(c.id));
+
+    // if none left, reset used list and use full pool
+    const pool = unused.length > 0 ? unused : cards;
+
+    const randomCard = pool[Math.floor(Math.random() * pool.length)];
+
+    // mark chosen id as used (if we were using the reset pool and unused was empty,
+    // this will start a new cycle)
+    setUsedVocabIds((prev) => {
+      // if pool === cards and all were used, reset to [randomCard.id]
+      if (unused.length === 0) return [randomCard.id];
+      return [...prev, randomCard.id];
+    });
+
+    return {
+      type: 'vocabulary',
+      card: randomCard,
+      question: `${randomCard.front} (${randomCard.transliteration})`,
+      correctAnswer: randomCard.back,
+      transliteration: randomCard.transliteration
+    };
+  };
+
+  const getNextExercise = (): MixedExercise => {
+    const isGrammar = Math.random() > 0.5 && grammarExercises.length > 0;
+    return isGrammar ? getRandomGrammarExercise() : pickRandomVocabularyExercise();
+  };
+
+  const [currentExercise, setCurrentExercise] = useState<MixedExercise | null>(null);
+  const [options, setOptions] = useState<string[]>([]);
   const [feedback, setFeedback] = useState<string>("");
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [streak, setStreak] = useState(0);
   const [showHint, setShowHint] = useState(false);
 
   useEffect(() => {
-    setOptions(getRandomOptions(currentExercise.correctAnswer, currentExercise.type));
+    // initialize first exercise
+    if (currentExercise === null) {
+      const ex = getNextExercise();
+      setCurrentExercise(ex);
+      return;
+    }
+
+    setOptions(getRandomOptions(currentExercise!.correctAnswer, currentExercise!.type));
     setFeedback("");
     setShowHint(false);
   }, [currentExercise]);
 
   const handleAnswer = (answer: string) => {
+    if (!currentExercise) return;
     const isCorrect = answer === currentExercise.correctAnswer;
     
     if (isCorrect) {
@@ -194,7 +222,7 @@ const MultipleChoiceGame: React.FC = () => {
   };
 
   const nextQuestion = () => {
-    setCurrentExercise(getRandomExercise());
+    setCurrentExercise(getNextExercise());
   };
 
   const toggleHint = () => {
@@ -202,6 +230,7 @@ const MultipleChoiceGame: React.FC = () => {
   };
 
   const getExerciseTypeLabel = () => {
+    if (!currentExercise) return "";
     if (currentExercise.type === 'grammar') {
       const grammarType = currentExercise.grammarExercise?.type || 'grammar';
       return `Grammar: ${grammarType.charAt(0).toUpperCase() + grammarType.slice(1)}`;
@@ -234,24 +263,24 @@ const MultipleChoiceGame: React.FC = () => {
       </div>
 
       <div className="exercise-type">
-        <span className={`type-badge ${currentExercise.type}`}>
+        <span className={`type-badge ${currentExercise?.type || ''}`}>
           {getExerciseTypeLabel()}
         </span>
       </div>
 
       <div className="question-card">
         <h3>
-          {currentExercise.type === 'grammar' 
+          {currentExercise?.type === 'grammar'
             ? currentExercise.question
-            : `${currentExercise.card?.front} (${currentExercise.card?.transliteration})`
+            : `${currentExercise?.card?.front} (${currentExercise?.card?.transliteration})`
           }
         </h3>
-        {currentExercise.transliteration && (
-          <p className="transliteration-hint">Transliteration: {currentExercise.transliteration}</p>
+        {currentExercise?.transliteration && (
+          <p className="transliteration-hint">Transliteration: {currentExercise?.transliteration}</p>
         )}
       </div>
 
-      {currentExercise.type === 'grammar' && currentExercise.grammarExercise?.hint && (
+      {currentExercise?.type === 'grammar' && currentExercise.grammarExercise?.hint && (
         <div className="hint-section">
           <button className="hint-button" onClick={toggleHint}>
             {showHint ? 'Hide Hint' : 'Show Hint'} 💡
@@ -283,14 +312,14 @@ const MultipleChoiceGame: React.FC = () => {
             {feedback}
           </p>
           <div className="exercise-notes">
-            {currentExercise.type === 'vocabulary' && currentExercise.card?.notes && (
-              <p className="notes"><strong>Note:</strong> {currentExercise.card.notes}</p>
-            )}
-            {currentExercise.type === 'grammar' && currentExercise.grammarExercise?.type && (
-              <p className="notes">
-                <strong>Grammar Focus:</strong> {currentExercise.grammarExercise.type}
-              </p>
-            )}
+              {currentExercise?.type === 'vocabulary' && currentExercise.card?.notes && (
+                <p className="notes"><strong>Note:</strong> {currentExercise.card.notes}</p>
+              )}
+              {currentExercise?.type === 'grammar' && currentExercise.grammarExercise?.type && (
+                <p className="notes">
+                  <strong>Grammar Focus:</strong> {currentExercise.grammarExercise.type}
+                </p>
+              )}
           </div>
           <button onClick={nextQuestion} className="next-button">
             Next Question ➡
