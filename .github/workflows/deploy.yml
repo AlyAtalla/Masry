@@ -6,9 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  VITE_BASE_PATH: ${{ contains(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name) }}
-
 permissions:
   contents: read
   pages: write
