@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  VITE_BASE_PATH: ${{ contains(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name) }}
+
 permissions:
   contents: read
   pages: write
@@ -33,6 +36,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
